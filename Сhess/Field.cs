@@ -8,11 +8,17 @@ namespace Chess
     {
         public void CreateField()
         {
-            string[,] cell = new string[8,8];
+            string[,] cell = new string[8, 8];
 
             PlacementOfFigure(cell);
 
-            WorkConsole.WriteField(cell);
+            while (true)
+            {
+                string[] move = WorkConsole.WriteField(cell);
+
+                FigureMove.SelectingFigure(move, cell);
+            }
+
         }
 
         void PlacementOfFigure(string[,] cell)
