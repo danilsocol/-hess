@@ -68,8 +68,9 @@ namespace Chess
             Console.WriteLine("Введите имя первого игрока, а затем второго");
             return Console.ReadLine();
         }
-        public static void WriteField(string[,] figure)
+        public static string[] WriteField(string[,] figure)
         {
+            Console.SetCursorPosition(0, 0);
             WriteFieldLine("┌", "─", "┬", "┐", 8);
             Console.WriteLine();
 
@@ -94,6 +95,8 @@ namespace Chess
             }
             Console.SetCursorPosition(0, Console.CursorTop - 1);
             WriteFieldLine("└", "─", "┴", "┘", 8);
+
+            return ReadСoordinates();
         }
         static void WriteFieldLine(string char1, string char2, string char3, string char4, int num)
         {
@@ -103,6 +106,32 @@ namespace Chess
                 Console.Write(char3 + char2 + char2 + char2);
 
             Console.Write(char4);
+        }
+        static string[] ReadСoordinates()
+        {
+            string[] move = new string[2];
+
+            while (true)
+            {
+                Console.SetCursorPosition(34, 1);
+                Console.Write("Введите координаты фигуры (А5): ");
+                move[0] = Console.ReadLine();
+
+                Console.SetCursorPosition(34, 3);
+                Console.Write("Введите координаты куда хотите сходить (А6): ");
+                move[1] = Console.ReadLine();
+
+                if(FigureMove.IsCorrectCoordinate(move[0]) && FigureMove.IsCorrectCoordinate(move[1])) 
+                {
+                    return move;
+                }
+            }
+        }
+
+        public static void Error()
+        {
+            Console.Clear();
+            Console.WriteLine("Ошибка");
         }
     }
 }

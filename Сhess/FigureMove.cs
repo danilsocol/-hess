@@ -6,68 +6,55 @@ namespace Chess
 {
     class FigureMove
     {
-        private static bool IsCorrectCoordinate(string coord)
+        public static bool IsCorrectCoordinate(string coord)
         {
             char letter = coord[0];
-            char num = coord[1];
+            char num = coord[1] ;
             return coord.Length == 2 && letter >= 'A' && letter <= 'H' && num >= '1' && num <= '8';
         }
-        private static string ReadCoord()
-        {
-            do
+        //public static string ReadCoord(string coord)
+        //{
+        //    do
+        //    {
+        //        if (IsCorrectCoordinate(coord))
+        //            return coord;
+        //        else
+        //            WorkConsole.Error();
+        //    }
+        //    while (true);
+        //}
 
+            enum FigureType
             {
-                string input = Console.ReadLine().ToUpper();
-                if (IsCorrectCoordinate(input))
-                    return input;
-                else
-                    Console.WriteLine("Координата не корректна!");
+                pawn, rook, knight, bishop, queen, king
             }
-            while (true);
-        }
 
-        enum FigureType
+        private static FigureType ReadFigureType(string[,] cell,string start)
         {
-            pawn, rook, knight, bishop, queen, king
-        }
-
-        private static FigureType ReadFigureType()
-        {
-            do
+            string input = cell[start[0] - 64, start[1] - 49];
+            switch (input)
             {
-                string input = Console.ReadLine();
-                switch (input)
-                {
+                case ("P"):
+                    return FigureType.pawn;
 
-                    case ("0"):
-                    case ("pawn"):
-                        return FigureType.pawn;
+                case ("R"):
+                    return FigureType.rook;
 
-                    case ("1"):
-                    case ("rook"):
-                        return FigureType.rook;
+                case ("H"):
+                    return FigureType.knight;
 
-                    case ("2"):
-                    case ("knight"):
-                        return FigureType.knight;
+                case ("B"):
+                    return FigureType.bishop;
 
-                    case ("3"):
-                    case ("bishop"):
-                        return FigureType.bishop;
+                case ("Q"):
+                    return FigureType.queen;
 
-                    case ("4"):
-                    case ("queen"):
-                        return FigureType.queen;
+                case ("K"):
+                    return FigureType.king;
 
-                    case ("5"):
-                    case ("king"):
-                        return FigureType.king;
-
-                    default:
-                        Console.WriteLine("Тип фигуры не корректен!");
-                        break;
-                }
-            } while (true);
+                default:
+                    return 0;
+            }
         }
 
         private static bool IsKnightCorrect(string start, string end)
@@ -108,18 +95,25 @@ namespace Chess
             return (Math.Abs(start[0] - end[0]) <= 1 && Math.Abs(start[1] - end[1]) <= 1);
         }
 
-
-
-        static void SelectingFigure(string[] args)
+        static bool RecognitionFigureInCell(string[,] cell,string start)
         {
-            Console.Write("Введите тип фигуры (0-pawn, 1-rook, 2-knight, 3-bishop, 4-queen, 5-king):");
-            FigureType figure = ReadFigureType();
+            if (cell[start[0] - 65, start[1]- 49] == " ")
+                return false;
+            else
+                return true;
+        }
 
-            Console.Write("Введите стартовую координату: ");
-            string start = ReadCoord();
+        public static void SelectingFigure(string[] move, string[,] cell)
+        {
+            string start = move[0];
 
-            Console.Write("Введите конечную координату: ");
-            string end = ReadCoord();
+            if (!RecognitionFigureInCell(cell, start))
+                WorkConsole.Error();
+
+            FigureType figure = ReadFigureType(cell,start);
+
+            string end = move[1];
+
 
             bool isCorrect = false;
             switch (figure)
@@ -148,11 +142,20 @@ namespace Chess
                     isCorrect = IsBishopCorrect(start, end);
                     break;
             }
+            int StartHorizontalCood = start[1] - 49;
+            int StartVerticalCoord = start[0] - 65;
+
+            int EndHorizontalCood = end[1] - 49;
+            int EndVerticalCoord = end[0] - 65;
 
             if (isCorrect)
-                Console.WriteLine("Ваша фигура ходит правильно.");
+            {
+                string pickFigure = cell[StartVerticalCoord, StartHorizontalCood];
+                cell[StartVerticalCoord, StartHorizontalCood] = null;
+                cell[EndVerticalCoord, EndHorizontalCood] = pickFigure;
+            }
             else
-                Console.WriteLine("Такой ход не возможен для данной фигуры.");
+                WorkConsole.Error();
         }
     }
 }
