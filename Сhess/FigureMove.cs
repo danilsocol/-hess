@@ -31,7 +31,7 @@ namespace Chess
 
         private static FigureType ReadFigureType(string[,] cell,string start)
         {
-            string input = cell[start[0] - 64, start[1] - 49];
+            string input = cell[start[0] - 65, start[1] - 49];
             switch (input)
             {
                 case ("P"):
@@ -67,31 +67,26 @@ namespace Chess
 
         private static bool IsPawnCorrect(string start, string end)
         {
-
             return (end[0] - start[0] == 0 && end[1] - start[1] == 1);
         }
 
         private static bool IsRookCorrect(string start, string end)
         {
-
             return (end[0] == start[0] && end[1] != start[1] || end[0] != start[0] && end[1] == start[1]);
         }
 
         private static bool IsBishopCorrect(string start, string end)
         {
-
             return (Math.Abs(start[0] - end[0]) == Math.Abs(start[1] - end[1]));
         }
 
         private static bool IsQueenCorrect(string start, string end)
         {
-
             return (Math.Abs(start[0] - end[0]) == Math.Abs(start[1] - end[1]) || end[0] == start[0] && end[1] != start[1] || end[0] != start[0] && end[1] == start[1]);
         }
 
         private static bool IsKingCorrect(string start, string end)
         {
-
             return (Math.Abs(start[0] - end[0]) <= 1 && Math.Abs(start[1] - end[1]) <= 1);
         }
 
