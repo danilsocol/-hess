@@ -1,156 +1,77 @@
 ﻿using System;
 
-namespace Исправа
+namespace Chess
 {
     class Program
     {
-        private static bool IsCorrectCoordinate(string coord)
-        {
-            char letter = coord[0];
-            char num = coord[1];
-            return coord.Length == 2 && letter >= 'A' && letter <= 'H' && num >= '1' && num <= '8';
-        }
-        private static string ReadCoord()
-        {
-            do
-
-            {
-                string input = Console.ReadLine().ToUpper();
-                if (IsCorrectCoordinate(input))
-                    return input;
-                else
-                    Console.WriteLine("Координата не корректна!");
-            }
-            while (true);
-        }
-
-        enum FigureType
-        {
-            pawn, rook, knight, bishop, queen, king
-        }
-
-        private static FigureType ReadFigureType()
-        {
-            do
-            {
-                string input = Console.ReadLine();
-                switch (input)
-                {
-
-                    case ("0"):
-                    case ("pawn"):
-                        return FigureType.pawn;
-
-                    case ("1"):
-                    case ("rook"):
-                        return FigureType.rook;
-
-                    case ("2"):
-                    case ("knight"):
-                        return FigureType.knight;
-
-                    case ("3"):
-                    case ("bishop"):
-                        return FigureType.bishop;
-
-                    case ("4"):
-                    case ("queen"):
-                        return FigureType.queen;
-
-                    case ("5"):
-                    case ("king"):
-                        return FigureType.king;
-
-                    default:
-                        Console.WriteLine("Тип фигуры не корректен!");
-                        break;
-                }
-            } while (true);
-        }
-
-        private static bool IsKnightCorrect(string start, string end)
-        {
-            int dx = Math.Abs(end[0] - start[0]);
-            int dy = Math.Abs(end[1] - start[1]);
-
-            return dx + dy == 3 && dx * dy == 2;
-        }
-
-        private static bool IsPawnCorrect(string start, string end)
-        {
-
-            return (end[0] - start[0] == 0 && end[1] - start[1] == 1);
-        }
-
-        private static bool IsRookCorrect(string start, string end)
-        {
-
-            return (end[0] == start[0] && end[1] != start[1] || end[0] != start[0] && end[1] == start[1]);
-        }
-
-        private static bool IsBishopCorrect(string start, string end)
-        {
-
-            return (Math.Abs(start[0] - end[0]) == Math.Abs(start[1] - end[1]));
-        }
-
-        private static bool IsQueenCorrect(string start, string end)
-        {
-
-            return (Math.Abs(start[0] - end[0]) == Math.Abs(start[1] - end[1]) || end[0] == start[0] && end[1] != start[1] || end[0] != start[0] && end[1] == start[1]);
-        }
-
-        private static bool IsKingCorrect(string start, string end)
-        {
-
-            return (Math.Abs(start[0] - end[0]) <= 1 && Math.Abs(start[1] - end[1]) <= 1);
-        }
-
-
-
         static void Main(string[] args)
         {
-            Console.Write("Введите тип фигуры (0-pawn, 1-rook, 2-knight, 3-bishop, 4-queen, 5-king):");
-            FigureType figure = ReadFigureType();
+            int select = 1;
 
-            Console.Write("Введите стартовую координату: ");
-            string start = ReadCoord();
-
-            Console.Write("Введите конечную координату: ");
-            string end = ReadCoord();
-
-            bool isCorrect = false;
-            switch (figure)
+            WorkConsole.ReadMenu(select);
+            Selection(select);
+        }
+        static void Selection(int select)
+        {
+            while (true)
             {
-                case FigureType.knight:
-                    isCorrect = IsKnightCorrect(start, end);
-                    break;
+                ConsoleKey key = Console.ReadKey().Key;
 
-                case FigureType.pawn:
-                    isCorrect = IsPawnCorrect(start, end);
-                    break;
+                if (key == ConsoleKey.Enter)
+                {
 
-                case FigureType.rook:
-                    isCorrect = IsRookCorrect(start, end);
-                    break;
+                    Person oneUser = new Person();
+                    Person twoUser = new Person();
 
-                case FigureType.queen:
-                    isCorrect = IsQueenCorrect(start, end);
-                    break;
+                    Console.Clear();
+                    switch (select)
+                    {
+                        case 1:
+                            CreateUser(oneUser);
+                            CreateUser(twoUser);
+                            GameActions();
+                            break;
 
-                case FigureType.king:
-                    isCorrect = IsKingCorrect(start, end);
-                    break;
+                        case 2:
 
-                case FigureType.bishop:
-                    isCorrect = IsBishopCorrect(start, end);
+                            break;
+
+                        case 3:
+
+                            break;
+
+                        case 4:
+
+                            break;
+                    }
                     break;
+                }
+                if (key == ConsoleKey.W || key == ConsoleKey.UpArrow)
+                    if (select != 1)
+                        select -= 1;
+
+                if (key == ConsoleKey.S || key == ConsoleKey.DownArrow)
+                    if (select != 4)
+                        select += 1;
+
+                Console.Clear();
+                WorkConsole.ReadMenu(select);
             }
+        }
+        public static void CreateUser(Person User)
+        {
+            do
+            {
+                User.name = WorkConsole.ReadName();
+                Console.Clear();
 
-            if (isCorrect)
-                Console.WriteLine("Ваша фигура ходит правильно.");
-            else
-                Console.WriteLine("Такой ход не возможен для данной фигуры.");
+            } while (User.name.Length == 0);
+        }
+        public static void GameActions()
+        {
+            Field field = new Field();
+            field.CreateField();
+
         }
     }
 }
