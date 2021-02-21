@@ -68,7 +68,7 @@ namespace Chess
             Console.WriteLine("Введите имя первого игрока, а затем второго");
             return Console.ReadLine();
         }
-        public static void WriteField()
+        public static void WriteField(string[,] figure)
         {
             WriteFieldLine("┌", "─", "┬", "┐", 8);
             Console.WriteLine();
@@ -80,7 +80,12 @@ namespace Chess
                 {
                     Console.Write(" ");
 
-                    Console.Write("  " + "│");
+                    if(figure[x, y] == null)
+                    {
+                        figure[x, y] = " ";
+                    }
+
+                    Console.Write(figure[x, y] + " │");
                 }
                 Console.WriteLine();
 
