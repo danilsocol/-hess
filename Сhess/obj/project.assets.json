@@ -13,9 +13,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Проекты\\MyGameTwo\\Сhess\\Сhess\\Сhess.csproj",
-      "projectName": "Сhess",
-      "projectPath": "E:\\Проекты\\MyGameTwo\\Сhess\\Сhess\\Сhess.csproj",
+      "projectUniqueName": "E:\\Проекты\\MyGameTwo\\Сhess\\Сhess\\Chess.csproj",
+      "projectName": "Chess",
+      "projectPath": "E:\\Проекты\\MyGameTwo\\Сhess\\Сhess\\Chess.csproj",
       "packagesPath": "C:\\Users\\Seraphic\\.nuget\\packages\\",
       "outputPath": "E:\\Проекты\\MyGameTwo\\Сhess\\Сhess\\obj\\",
       "projectStyle": "PackageReference",

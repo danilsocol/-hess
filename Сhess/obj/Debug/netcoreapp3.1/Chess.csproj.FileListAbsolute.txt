@@ -1,0 +1,13 @@
+E:\Проекты\MyGameTwo\Сhess\Сhess\obj\Debug\netcoreapp3.1\Chess.csprojAssemblyReference.cache
+E:\Проекты\MyGameTwo\Сhess\Сhess\obj\Debug\netcoreapp3.1\Chess.AssemblyInfoInputs.cache
+E:\Проекты\MyGameTwo\Сhess\Сhess\obj\Debug\netcoreapp3.1\Chess.AssemblyInfo.cs
+E:\Проекты\MyGameTwo\Сhess\Сhess\obj\Debug\netcoreapp3.1\Chess.csproj.CoreCompileInputs.cache
+E:\Проекты\MyGameTwo\Сhess\Сhess\bin\Debug\netcoreapp3.1\Chess.exe
+E:\Проекты\MyGameTwo\Сhess\Сhess\bin\Debug\netcoreapp3.1\Chess.deps.json
+E:\Проекты\MyGameTwo\Сhess\Сhess\bin\Debug\netcoreapp3.1\Chess.runtimeconfig.json
+E:\Проекты\MyGameTwo\Сhess\Сhess\bin\Debug\netcoreapp3.1\Chess.runtimeconfig.dev.json
+E:\Проекты\MyGameTwo\Сhess\Сhess\bin\Debug\netcoreapp3.1\Chess.dll
+E:\Проекты\MyGameTwo\Сhess\Сhess\bin\Debug\netcoreapp3.1\Chess.pdb
+E:\Проекты\MyGameTwo\Сhess\Сhess\obj\Debug\netcoreapp3.1\Chess.dll
+E:\Проекты\MyGameTwo\Сhess\Сhess\obj\Debug\netcoreapp3.1\Chess.pdb
+E:\Проекты\MyGameTwo\Сhess\Сhess\obj\Debug\netcoreapp3.1\Chess.genruntimeconfig.cache
