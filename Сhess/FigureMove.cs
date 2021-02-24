@@ -6,43 +6,65 @@ namespace Chess
 {
     class FigureMove
     {
-        public static bool IsCorrectCoordinate(string coord)
+        public static void MakeMove(string[] move, string[,] cell)
         {
-            char letter = coord[0];
-            char num = coord[1] ;
-            return coord.Length == 2 && letter >= 'A' && letter <= 'H' && num >= '1' && num <= '8';
-        }
-            enum FigureType
-            {
-                pawn, rook, knight, bishop, queen, king
-            }
+            string start = move[0];
 
-        private static FigureType ReadFigureType(string[,] cell,string start)
-        {
-            string input = cell[start[0] - 48, start[1] - 48];
-            switch (input)
+            if (!RecognitionFigureInCell(cell, start))
+                WorkConsole.Error();
+
+            string end = move[1];
+
+            bool isCorrect = CheckCorrectOfTheMove(cell, start,end);
+
+            int StartHorizontalCood = start[1] - 48;
+            int StartVerticalCoord = start[0] - 48;
+
+            int EndHorizontalCood = end[1] - 48;
+            int EndVerticalCoord = end[0] - 48;
+
+            if (isCorrect)
             {
-                case ("P"):
-                    return FigureType.pawn;
+                string pickFigure = cell[StartVerticalCoord, StartHorizontalCood];
+                cell[StartVerticalCoord, StartHorizontalCood] = null;
+                cell[EndVerticalCoord, EndHorizontalCood] = pickFigure;
+            }
+            else
+                WorkConsole.Error();
+        }
+
+        static bool CheckCorrectOfTheMove(string[,] cell, string start, string end)
+        {
+
+            bool isCorrect = false;
+
+            switch (cell[start[0] - 48, start[1] - 48])
+            {
+                case ("H"):
+                    isCorrect = IsKnightCorrect(start, end);
+                    break;
+
+                case "P":
+                    isCorrect = IsPawnCorrect(start, end);
+                    break;
 
                 case ("R"):
-                    return FigureType.rook;
-
-                case ("H"):
-                    return FigureType.knight;
-
-                case ("B"):
-                    return FigureType.bishop;
+                    isCorrect = IsRookCorrect(start, end);
+                    break;
 
                 case ("Q"):
-                    return FigureType.queen;
+                    isCorrect = IsQueenCorrect(start, end);
+                    break;
 
                 case ("K"):
-                    return FigureType.king;
+                    isCorrect = IsKingCorrect(start, end);
+                    break;
 
-                default:
-                    return 0;
+                case ("B"):
+                    isCorrect = IsBishopCorrect(start, end);
+                    break;
             }
+            return isCorrect;
         }
 
         private static bool IsKnightCorrect(string start, string end)
@@ -78,67 +100,13 @@ namespace Chess
             return (Math.Abs(start[0] - end[0]) <= 1 && Math.Abs(start[1] - end[1]) <= 1);
         }
 
-        static bool RecognitionFigureInCell(string[,] cell,string start)
+        public static bool RecognitionFigureInCell(string[,] cell, string start)
         {
-            if (cell[start[0] - 48, start[1]- 48] == " ")
+            if (cell[start[0] - 48, start[1] - 48] == " ")
                 return false;
             else
                 return true;
         }
 
-        public static void SelectingFigure(string[] move, string[,] cell)
-        {
-            string start = move[0];
-
-            if (!RecognitionFigureInCell(cell, start))
-                WorkConsole.Error();
-
-            FigureType figure = ReadFigureType(cell,start);
-
-            string end = move[1];
-
-
-            bool isCorrect = false;
-            switch (figure)
-            {
-                case FigureType.knight:
-                    isCorrect = IsKnightCorrect(start, end);
-                    break;
-
-                case FigureType.pawn:
-                    isCorrect = IsPawnCorrect(start, end);
-                    break;
-
-                case FigureType.rook:
-                    isCorrect = IsRookCorrect(start, end);
-                    break;
-
-                case FigureType.queen:
-                    isCorrect = IsQueenCorrect(start, end);
-                    break;
-
-                case FigureType.king:
-                    isCorrect = IsKingCorrect(start, end);
-                    break;
-
-                case FigureType.bishop:
-                    isCorrect = IsBishopCorrect(start, end);
-                    break;
-            }
-            int StartHorizontalCood = start[1] - 48;
-            int StartVerticalCoord = start[0] - 48;
-
-            int EndHorizontalCood = end[1] - 48;
-            int EndVerticalCoord = end[0] - 48;
-
-            if (isCorrect)
-            {
-                string pickFigure = cell[StartVerticalCoord, StartHorizontalCood];
-                cell[StartVerticalCoord, StartHorizontalCood] = null;
-                cell[EndVerticalCoord, EndHorizontalCood] = pickFigure;
-            }
-            else
-                WorkConsole.Error();
-        }
     }
 }
