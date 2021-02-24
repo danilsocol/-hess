@@ -12,9 +12,17 @@ namespace Chess
 
             PlacementOfFigure(cell);
 
+            int[] select = { 0, 0 };
+            int[] pastSelect = { 0, 0 };
+            string[] move = new string[2];
+
             while (true)
             {
-                string[] move = WorkConsole.WriteField(cell);
+                //string[] move = WorkConsole.WriteField(cell);
+                WorkConsole.WriteField(cell);
+
+                SelectCell(select,cell, pastSelect, move);
+
 
                 FigureMove.SelectingFigure(move, cell);
             }
@@ -50,6 +58,37 @@ namespace Chess
 
             cell[4, 0] = "K";// КОРОЛь
             cell[4, 7] = "K";
+        }
+
+
+        public static void SelectCell(int[] select, string[,] cell, int[] pastSelect,string[] move)
+        {
+            bool start = true;
+
+            while (true)
+            {
+                ConsoleKey key = Console.ReadKey().Key;
+
+                if (key == ConsoleKey.DownArrow && select[1] < 7) select[1]++;
+                if (key == ConsoleKey.UpArrow && select[1] > 0) select[1]--;
+                if (key == ConsoleKey.RightArrow && select[0] < 7) select[0]++;
+                if (key == ConsoleKey.LeftArrow && select[0] > 0) select[0]--;
+
+                WorkConsole.WriteChoiceCell(select, cell, pastSelect);
+
+
+                if (key == ConsoleKey.Enter && !start)
+                {
+                    move[1] = $"{select[0]}{select[1]}";
+                    break;
+                }
+
+                if (key == ConsoleKey.Enter && start)
+                {
+                    move[0] = $"{select[0]}{select[1]}";
+                    start = false;
+                }
+            }
         }
     }
 }
