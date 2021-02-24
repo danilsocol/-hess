@@ -12,18 +12,6 @@ namespace Chess
             char num = coord[1] ;
             return coord.Length == 2 && letter >= 'A' && letter <= 'H' && num >= '1' && num <= '8';
         }
-        //public static string ReadCoord(string coord)
-        //{
-        //    do
-        //    {
-        //        if (IsCorrectCoordinate(coord))
-        //            return coord;
-        //        else
-        //            WorkConsole.Error();
-        //    }
-        //    while (true);
-        //}
-
             enum FigureType
             {
                 pawn, rook, knight, bishop, queen, king
@@ -31,7 +19,7 @@ namespace Chess
 
         private static FigureType ReadFigureType(string[,] cell,string start)
         {
-            string input = cell[start[0] - 65, start[1] - 49];
+            string input = cell[start[0] - 48, start[1] - 48];
             switch (input)
             {
                 case ("P"):
@@ -92,7 +80,7 @@ namespace Chess
 
         static bool RecognitionFigureInCell(string[,] cell,string start)
         {
-            if (cell[start[0] - 65, start[1]- 49] == " ")
+            if (cell[start[0] - 48, start[1]- 48] == " ")
                 return false;
             else
                 return true;
@@ -137,11 +125,11 @@ namespace Chess
                     isCorrect = IsBishopCorrect(start, end);
                     break;
             }
-            int StartHorizontalCood = start[1] - 49;
-            int StartVerticalCoord = start[0] - 65;
+            int StartHorizontalCood = start[1] - 48;
+            int StartVerticalCoord = start[0] - 48;
 
-            int EndHorizontalCood = end[1] - 49;
-            int EndVerticalCoord = end[0] - 65;
+            int EndHorizontalCood = end[1] - 48;
+            int EndVerticalCoord = end[0] - 48;
 
             if (isCorrect)
             {
