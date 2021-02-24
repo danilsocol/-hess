@@ -6,30 +6,30 @@ namespace Chess
 {
     class WorkConsole
     {
-        public static void ReadMenu(int select)
+        public static void ReadMenu(int menuSelect)
         {
-            int counter = 0;
+            int menuCounter = 0;
 
-            ReadFream("   Chess   ", select, counter);
+            ReadFream("   Chess   ", menuSelect, menuCounter);
             Console.WriteLine("\n");
-            counter++;
+            menuCounter++;
 
-            ReadFream(" Новая игра ", select, counter);
+            ReadFream(" Новая игра ", menuSelect, menuCounter);
             Console.WriteLine("");
-            counter++;
+            menuCounter++;
 
-            ReadFream(" Продолжить ", select, counter);
+            ReadFream(" Продолжить ", menuSelect, menuCounter);
             Console.WriteLine("");
-            counter++;
+            menuCounter++;
 
-            ReadFream(" Рейтинг    ", select, counter);
+            ReadFream(" Рейтинг    ", menuSelect, menuCounter);
             Console.WriteLine("");
-            counter++;
+            menuCounter++;
 
-            ReadFream(" Выход      ", select, counter);
+            ReadFream(" Выход      ", menuSelect, menuCounter);
             Console.WriteLine("");
         }
-        public static void ReadFream(string text, int select, int counter)
+        public static void ReadFream(string text, int menuSelect, int menuCounter)
         {
             int numSpace = 50;
 
@@ -37,13 +37,13 @@ namespace Chess
             for (int i = 0; i < text.Length; i++)
                 line += '═';
 
-            CreateSpace(numSpace, select, counter);
+            CreateSpace(numSpace, menuSelect, menuCounter);
             Сell('╔', line, '╗');
 
-            CreateSpace(numSpace, select, counter);
+            CreateSpace(numSpace, menuSelect, menuCounter);
             Сell('║', text, '║');
 
-            CreateSpace(numSpace, select, counter);
+            CreateSpace(numSpace, menuSelect, menuCounter);
             Сell('╚', line, '╝');
         }
 
@@ -55,12 +55,12 @@ namespace Chess
 
             Console.ResetColor();
         }
-        public static void CreateSpace(int numSpace, int select, int counter)
+        public static void CreateSpace(int numSpace, int menuSelect, int menuCounter)
         {
             for (int i = 0; i < numSpace; i++)
                 Console.Write(" ");
 
-            if (select == counter)
+            if (menuSelect == menuCounter)
                 Console.BackgroundColor = ConsoleColor.Red;
         }
         public static string ReadName()
@@ -96,7 +96,6 @@ namespace Chess
             Console.SetCursorPosition(0, Console.CursorTop - 1);
             WriteFieldLine("└", "─", "┴", "┘", 8);
 
-           // return ReadСoordinates(select);
         }
         static void WriteFieldLine(string char1, string char2, string char3, string char4, int num)
         {
@@ -107,55 +106,29 @@ namespace Chess
 
             Console.Write(char4);
         }
-        static string[] ReadСoordinates(int[] select)
-        {
-            string[] move = new string[2];
-
-            while (true)
-            {
-                // Console.SetCursorPosition(select[0] * 4 + 3, select[1] * 2 + 1);
-
-
-                Console.SetCursorPosition(34, 1);
-                Console.Write("Введите координаты фигуры (А5): ");
-                move[0] = Console.ReadLine();
-                // move[0] = $"{ select[0] - 1}{select[1] - 1}";
-
-
-                Console.SetCursorPosition(34, 3);
-                Console.Write("Введите координаты куда хотите сходить (А6): ");
-                move[1] = Console.ReadLine();
-
-                if (FigureMove.IsCorrectCoordinate(move[0]) && FigureMove.IsCorrectCoordinate(move[1]))
-                {
-                    return move;
-                }
-            }
-        }
+        
         public static void Error()
         {
             Console.Clear();
             Console.WriteLine("Ошибка");
         }
 
-        public static void WriteChoiceCell(int[] select, string[,] cell, int[] pastSelect)
+        public static void WriteChoiceCell(int[] selectCell, string[,] cell, int[] pastSelectCell)
         {
-            Console.SetCursorPosition(pastSelect[0] * 4 + 1, pastSelect[1] * 2 + 1);
+            Console.SetCursorPosition(pastSelectCell[0] * 4 + 1, pastSelectCell[1] * 2 + 1);
 
             Console.ForegroundColor = ConsoleColor.Gray;
-            Console.Write($" {cell[pastSelect[0], pastSelect[1]]}");
+            Console.Write($" {cell[pastSelectCell[0], pastSelectCell[1]]}");
             Console.ResetColor();
 
-
-
-            Console.SetCursorPosition(select[0] * 4 + 1, select[1] * 2 + 1);
+            Console.SetCursorPosition(selectCell[0] * 4 + 1, selectCell[1] * 2 + 1);
 
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write($" {cell[select[0], select[1]]}");
+            Console.Write($" {cell[selectCell[0], selectCell[1]]}");
             Console.ResetColor();
 
-            pastSelect[0] = select[0];
-            pastSelect[1] = select[1];
+            pastSelectCell[0] = selectCell[0];
+            pastSelectCell[1] = selectCell[1];
         }
     }
 }

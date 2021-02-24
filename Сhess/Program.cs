@@ -6,12 +6,12 @@ namespace Chess
     {
         static void Main(string[] args)
         {
-            int select = 1;
+            int menuSelect = 1;
 
-            WorkConsole.ReadMenu(select);
-            Selection(select);
+            WorkConsole.ReadMenu(menuSelect);
+            Selection(menuSelect);
         }
-        static void Selection(int select)
+        static void Selection(int selectCell)
         {
             while (true)
             {
@@ -24,7 +24,7 @@ namespace Chess
                     Person twoUser = new Person();
 
                     Console.Clear();
-                    switch (select)
+                    switch (selectCell)
                     {
                         case 1:
                             CreateUser(oneUser);
@@ -47,15 +47,15 @@ namespace Chess
                     break;
                 }
                 if (key == ConsoleKey.W || key == ConsoleKey.UpArrow)
-                    if (select != 1)
-                        select -= 1;
+                    if (selectCell != 1)
+                        selectCell -= 1;
 
                 if (key == ConsoleKey.S || key == ConsoleKey.DownArrow)
-                    if (select != 4)
-                        select += 1;
+                    if (selectCell != 4)
+                        selectCell += 1;
 
                 Console.Clear();
-                WorkConsole.ReadMenu(select);
+                WorkConsole.ReadMenu(selectCell);
             }
         }
         public static void CreateUser(Person User)
@@ -71,7 +71,6 @@ namespace Chess
         {
             Field field = new Field();
             field.CreateField();
-
         }
     }
 }

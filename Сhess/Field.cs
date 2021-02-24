@@ -12,19 +12,17 @@ namespace Chess
 
             PlacementOfFigure(cell);
 
-            int[] select = { 0, 0 };
-            int[] pastSelect = { 0, 0 };
-            string[] move = new string[2];
+            int[] selectCell = { 0, 0 };
+            int[] pastSelectCell = { 0, 0 };
+            string[] movementOfTheFigures = new string[2];
 
             while (true)
             {
-                //string[] move = WorkConsole.WriteField(cell);
                 WorkConsole.WriteField(cell);
 
-                SelectCell(select,cell, pastSelect, move);
+                SelectCell(selectCell,cell, pastSelectCell, movementOfTheFigures);
 
-
-                FigureMove.SelectingFigure(move, cell);
+                FigureMove.MakeMove(movementOfTheFigures, cell);
             }
 
         }
@@ -61,32 +59,32 @@ namespace Chess
         }
 
 
-        public static void SelectCell(int[] select, string[,] cell, int[] pastSelect,string[] move)
+        public static void SelectCell(int[] selectCell, string[,] cell, int[] pastSelectCell,string[] movementOfTheFigures)
         {
-            bool start = true;
+            bool IsTheShapeSelected = true;
 
             while (true)
             {
                 ConsoleKey key = Console.ReadKey().Key;
 
-                if (key == ConsoleKey.DownArrow && select[1] < 7) select[1]++;
-                if (key == ConsoleKey.UpArrow && select[1] > 0) select[1]--;
-                if (key == ConsoleKey.RightArrow && select[0] < 7) select[0]++;
-                if (key == ConsoleKey.LeftArrow && select[0] > 0) select[0]--;
+                if (key == ConsoleKey.DownArrow && selectCell[1] < 7) selectCell[1]++;
+                if (key == ConsoleKey.UpArrow && selectCell[1] > 0) selectCell[1]--;
+                if (key == ConsoleKey.RightArrow && selectCell[0] < 7) selectCell[0]++;
+                if (key == ConsoleKey.LeftArrow && selectCell[0] > 0) selectCell[0]--;
 
-                WorkConsole.WriteChoiceCell(select, cell, pastSelect);
+                WorkConsole.WriteChoiceCell(selectCell, cell, pastSelectCell);
 
 
-                if (key == ConsoleKey.Enter && !start)
+                if (key == ConsoleKey.Enter && !IsTheShapeSelected)
                 {
-                    move[1] = $"{select[0]}{select[1]}";
+                    movementOfTheFigures[1] = $"{selectCell[0]}{selectCell[1]}";
                     break;
                 }
 
-                if (key == ConsoleKey.Enter && start)
+                if (key == ConsoleKey.Enter && IsTheShapeSelected && FigureMove.RecognitionFigureInCell(cell, $"{selectCell[0]}{selectCell[1]}"))
                 {
-                    move[0] = $"{select[0]}{select[1]}";
-                    start = false;
+                    movementOfTheFigures[0] = $"{selectCell[0]}{selectCell[1]}";
+                    IsTheShapeSelected = false;
                 }
             }
         }
