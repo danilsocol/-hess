@@ -4,36 +4,36 @@ using System.Text;
 
 namespace Chess
 {
-    class FigureMove
+    public class FigureMove
     {
-        public static void MakeMove(string[] move, string[,] cell)
-        {
-            string start = move[0];
+        //public static void MakeMove(string[] move, string[,] cell)
+        //{
+        //    string start = move[0];
 
-            if (!RecognitionFigureInCell(cell, start))
-                WorkConsole.Error();
+        //    if (!RecognitionFigureInCell(cell, start))
+        //        WorkConsole.Error();
 
-            string end = move[1];
+        //    string end = move[1];
 
-            bool isCorrect = CheckCorrectOfTheMove(cell, start,end);
+        //    bool isCorrect = CheckCorrectOfTheMove(cell, start,end);
 
-            int StartHorizontalCood = start[1] - 48;
-            int StartVerticalCoord = start[0] - 48;
+        //    int StartHorizontalCood = start[1] - 48;
+        //    int StartVerticalCoord = start[0] - 48;
 
-            int EndHorizontalCood = end[1] - 48;
-            int EndVerticalCoord = end[0] - 48;
+        //    int EndHorizontalCood = end[1] - 48;
+        //    int EndVerticalCoord = end[0] - 48;
 
-            if (isCorrect)
-            {
-                string pickFigure = cell[StartVerticalCoord, StartHorizontalCood];
-                cell[StartVerticalCoord, StartHorizontalCood] = null;
-                cell[EndVerticalCoord, EndHorizontalCood] = pickFigure;
-            }
-            else
-                WorkConsole.Error();
-        }
+        //    if (isCorrect)
+        //    {
+        //        string pickFigure = cell[StartVerticalCoord, StartHorizontalCood];
+        //        cell[StartVerticalCoord, StartHorizontalCood] = null;
+        //        cell[EndVerticalCoord, EndHorizontalCood] = pickFigure;
+        //    }
+        //    else
+        //        WorkConsole.Error();
+        //}
 
-        static bool CheckCorrectOfTheMove(string[,] cell, string start, string end)
+        public static bool CheckCorrectOfTheMove(string[,] cell, string start, string end)
         {
 
             bool isCorrect = false;
