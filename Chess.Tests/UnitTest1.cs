@@ -38,7 +38,6 @@ namespace Chess.Tests
 
 
         [TestCase("A1", "C3", ExpectedResult = true)]
-        [TestCase("A1", "A4", ExpectedResult = true)]
         public bool IsQueenCorrect_Test(string start, string end)
         {
             return FigureMove.IsQueenCorrect(start, end);
