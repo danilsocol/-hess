@@ -6,3 +6,4 @@ E:\Проекты\MyGameTwo\Сhess\Chess.Logic\obj\Debug\netstandard2.0\Chess.Lo
 E:\Проекты\MyGameTwo\Сhess\Chess.Logic\obj\Debug\netstandard2.0\Chess.Logic.csproj.CoreCompileInputs.cache
 E:\Проекты\MyGameTwo\Сhess\Chess.Logic\obj\Debug\netstandard2.0\Chess.Logic.dll
 E:\Проекты\MyGameTwo\Сhess\Chess.Logic\obj\Debug\netstandard2.0\Chess.Logic.pdb
+E:\Проекты\MyGameTwo\Сhess\Chess.Logic\obj\Debug\netstandard2.0\Chess.Logic.csprojAssemblyReference.cache
