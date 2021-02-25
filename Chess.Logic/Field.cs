@@ -13,19 +13,6 @@ namespace Chess
             PlacementOfFigure(cell);
 
             return cell;
-            //int[] selectCell = { 0, 0 };
-            //int[] pastSelectCell = { 0, 0 };
-            //string[] movementOfTheFigures = new string[2];
-
-            //while (true)
-            //{
-            //    WorkConsole.WriteField(cell);
-
-            //    SelectCell(selectCell,cell, pastSelectCell, movementOfTheFigures);
-
-            //    FigureMove.MakeMove(movementOfTheFigures, cell);
-            //}
-
         }
 
         static void PlacementOfFigure(string[,] cell)
