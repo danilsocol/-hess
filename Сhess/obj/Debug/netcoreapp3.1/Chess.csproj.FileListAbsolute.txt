@@ -11,3 +11,6 @@ E:\Проекты\MyGameTwo\Сhess\Сhess\bin\Debug\netcoreapp3.1\Chess.pdb
 E:\Проекты\MyGameTwo\Сhess\Сhess\obj\Debug\netcoreapp3.1\Chess.dll
 E:\Проекты\MyGameTwo\Сhess\Сhess\obj\Debug\netcoreapp3.1\Chess.pdb
 E:\Проекты\MyGameTwo\Сhess\Сhess\obj\Debug\netcoreapp3.1\Chess.genruntimeconfig.cache
+E:\Проекты\MyGameTwo\Сhess\Сhess\bin\Debug\netcoreapp3.1\Chess.Logic.dll
+E:\Проекты\MyGameTwo\Сhess\Сhess\bin\Debug\netcoreapp3.1\Chess.Logic.pdb
+E:\Проекты\MyGameTwo\Сhess\Сhess\obj\Debug\netcoreapp3.1\Chess.csproj.CopyComplete

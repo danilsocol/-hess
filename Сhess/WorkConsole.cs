@@ -115,16 +115,17 @@ namespace Chess
 
         public static void WriteChoiceCell(int[] selectCell, string[,] cell, int[] pastSelectCell)
         {
-            Console.SetCursorPosition(pastSelectCell[0] * 4 + 1, pastSelectCell[1] * 2 + 1);
+            Console.SetCursorPosition(pastSelectCell[0] * 4 + 2, pastSelectCell[1] * 2 + 1);
 
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.Write($" {cell[pastSelectCell[0], pastSelectCell[1]]}");
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.Write($"{cell[pastSelectCell[0], pastSelectCell[1]]}");
             Console.ResetColor();
 
-            Console.SetCursorPosition(selectCell[0] * 4 + 1, selectCell[1] * 2 + 1);
 
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write($" {cell[selectCell[0], selectCell[1]]}");
+            Console.SetCursorPosition(selectCell[0] * 4 + 2, selectCell[1] * 2 + 1);
+
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.Write($"{cell[selectCell[0], selectCell[1]]}");
             Console.ResetColor();
 
             pastSelectCell[0] = selectCell[0];
