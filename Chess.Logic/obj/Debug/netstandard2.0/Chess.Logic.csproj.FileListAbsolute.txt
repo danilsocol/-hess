@@ -1,9 +1,0 @@
-E:\Проекты\MyGameTwo\Сhess\Chess.Logic\bin\Debug\netstandard2.0\Chess.Logic.deps.json
-E:\Проекты\MyGameTwo\Сhess\Chess.Logic\bin\Debug\netstandard2.0\Chess.Logic.dll
-E:\Проекты\MyGameTwo\Сhess\Chess.Logic\bin\Debug\netstandard2.0\Chess.Logic.pdb
-E:\Проекты\MyGameTwo\Сhess\Chess.Logic\obj\Debug\netstandard2.0\Chess.Logic.AssemblyInfoInputs.cache
-E:\Проекты\MyGameTwo\Сhess\Chess.Logic\obj\Debug\netstandard2.0\Chess.Logic.AssemblyInfo.cs
-E:\Проекты\MyGameTwo\Сhess\Chess.Logic\obj\Debug\netstandard2.0\Chess.Logic.csproj.CoreCompileInputs.cache
-E:\Проекты\MyGameTwo\Сhess\Chess.Logic\obj\Debug\netstandard2.0\Chess.Logic.dll
-E:\Проекты\MyGameTwo\Сhess\Chess.Logic\obj\Debug\netstandard2.0\Chess.Logic.pdb
-E:\Проекты\MyGameTwo\Сhess\Chess.Logic\obj\Debug\netstandard2.0\Chess.Logic.csprojAssemblyReference.cache
