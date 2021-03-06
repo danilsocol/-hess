@@ -7,7 +7,7 @@ namespace Chess.Tests
     {
         [TestCase("A2","A3",ExpectedResult=true)]
 
-        public bool IsPawnCorrect_Test(string start,string end)
+        public bool IsPawnCorrect_Test(string start, string end)
         {
             return  FigureMove.IsPawnCorrect( start,  end);
         }
