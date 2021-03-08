@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chess.Logic", "Chess.Logic\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chess.Tests", "Chess.Tests\Chess.Tests.csproj", "{BBDED92A-0BDA-4BAF-AB12-697AB0F45D00}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chess.Desktop", "Chess.Desktop\Chess.Desktop.csproj", "{E48F845D-83AA-4B74-93FA-7096726C0E52}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chess.WPF", "Chess.WPF\Chess.WPF.csproj", "{3BD29252-6AEB-4060-9216-655AC25E639F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{BBDED92A-0BDA-4BAF-AB12-697AB0F45D00}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BBDED92A-0BDA-4BAF-AB12-697AB0F45D00}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BBDED92A-0BDA-4BAF-AB12-697AB0F45D00}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E48F845D-83AA-4B74-93FA-7096726C0E52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E48F845D-83AA-4B74-93FA-7096726C0E52}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E48F845D-83AA-4B74-93FA-7096726C0E52}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E48F845D-83AA-4B74-93FA-7096726C0E52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BD29252-6AEB-4060-9216-655AC25E639F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BD29252-6AEB-4060-9216-655AC25E639F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BD29252-6AEB-4060-9216-655AC25E639F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BD29252-6AEB-4060-9216-655AC25E639F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
