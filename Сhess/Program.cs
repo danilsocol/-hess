@@ -6,7 +6,7 @@ namespace Chess
     {
         static void Main(string[] args)
         {
-            int menuSelect = 1; // убрать
+            int menuSelect = 1;
 
             WorkConsole.ReadMenu(menuSelect);
             Selection(menuSelect);
